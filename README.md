@@ -32,4 +32,4 @@
 
 - Реализуйте класс `ArrayStorage`: хранение резюме на основе массива (методы `clear, get, save, delete, getAll, size`).
 - Протестируйте реализацию, запустив `MainTestArrayStorage.main()`: в IDEA слева на полях зеленая стрелка.
-- Протестируйте реализацию интерактивно с помощью `ReplTestArrayStorage.main()`.
+- Протестируйте реализацию интерактивно с помощью `MainTestArrayStorage.main()`.
