@@ -24,6 +24,7 @@ public class ArrayStorage {
         return new Resume[0];
     }
 
+
     int size() {
         return 0;
     }
