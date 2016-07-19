@@ -56,7 +56,6 @@ public class ArrayStorage {
                 return;
             }
         }
-
     }
 
     /*
@@ -70,8 +69,6 @@ public class ArrayStorage {
             fin[j] = storage[i];
             j++;
         }
-
-
         return fin;
     }
 
