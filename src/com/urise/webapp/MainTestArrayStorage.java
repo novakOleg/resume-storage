@@ -16,7 +16,7 @@ public class MainTestArrayStorage {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
-            System.out.print("Введите одну из команд - (list | save uuid | delete uuid | get uuid | clear | exit): ");
+            System.out.print("Введите одну из команд - (list | save uuid | delete uuid | get uuid | clear | exit | update | size ): ");
             String[] params = reader.readLine().trim().toLowerCase().split(" ");
             if (params.length < 1 || params.length > 2) {
                 System.out.println("Неверная команда.");
@@ -47,6 +47,12 @@ public class MainTestArrayStorage {
                     break;
                 case "clear":
                     ARRAY_STORAGE.clear();
+                    printAll();
+                    break;
+                case "update":
+                    Resume u = new Resume();
+                    u.setUuid(params[1]);
+                    ARRAY_STORAGE.update(u);
                     printAll();
                     break;
                 case "exit":

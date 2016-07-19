@@ -12,6 +12,25 @@ public class ArrayStorage {
     private Resume[] storage = new Resume[STORAGE_LIMIT];
     private int size = 0;
 
+    public boolean inspection(Resume r) {
+        for (int i = 0; i < size; i++) {
+            if (r.getUuid().equals(storage[i].getUuid())) {
+                System.out.println("This uuid " + r + " is already taken !!!");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getIndex(String uuid) {
+        for (int i = 0; i < size; i++) {
+            if (uuid.equals(storage[i].getUuid())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public void clear() {
 
         for (int i = 0; i < size; i++) {
@@ -20,45 +39,49 @@ public class ArrayStorage {
         size = 0;
     }
 
+    public void update(Resume r) {
+        if (inspection(r)) {
+            storage[getIndex(r.getUuid())] = r;
+            System.out.println("Update successfully");
+            return;
+        } else {
+            System.out.println("Error!this object " + r + " is absent");
+        }
+    }
 
     public void save(Resume r) {
         if (size == STORAGE_LIMIT) {
             System.out.println("Error! Massive has be full!!!");
             return;
         }
-        for (int i = 0; i < size; i++) {
-            if (r.setUuid(r).equals(storage[i].getUuid())){
-                System.out.println("This uuid is already taken !!! Please enter another !!!");
-                return;
-            }
+        if (inspection(r) == false) {
+            storage[size] = r;
+            size++;
+        } else {
+            System.out.println("Canceling");
+            return;
         }
-        storage[size] = r;
-        size++;
 
 
     }
 
     public Resume get(String uuid) {
-        Objects.requireNonNull(uuid, "uuis must not be null");
-        for (int i = 0; i < size; i++) {
-            if (uuid.equals(storage[i].getUuid())) {
-                return storage[i];
-            }
-        }
-        return null;
+        Objects.requireNonNull(uuid, "uuid must not be null");
+        return storage[getIndex(uuid)];
     }
 
     public void delete(String uuid) {
         Objects.requireNonNull(uuid, "uuis must not be null");
-        for (int i = 0; i < size; i++) {
-            if (uuid.equals(storage[i].getUuid())) {
-                storage[i] = storage[size - 1];
+        int index = getIndex(uuid);
+            if(index>0){
+                storage[index] = storage[size - 1];
                 storage[size - 1] = null;
                 size--;
                 return;
+            }else{
+                System.out.println("Error! "+uuid+"don't present in massive ");
             }
         }
-    }
 
     /*
      * @return array, contains only Resumes in storage (without null)
@@ -74,7 +97,7 @@ public class ArrayStorage {
         return fin;
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 
