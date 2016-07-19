@@ -9,7 +9,6 @@ public class ArrayStorage {
     Resume[] storage = new Resume[STORAGE_LIMIT];
     int size = 0;
 
-
     void clear() {
 
         for (int i = 0; i < size; i++) {
