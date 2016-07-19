@@ -16,7 +16,6 @@ public class ArrayStorage {
         size = 0;
     }
 
-
     void save(Resume r) {
         if (size == STORAGE_LIMIT) {
             System.out.println("Error! Massive has be full!!!");
