@@ -1,3 +1,7 @@
+package com.urise.webapp.storage;
+
+import com.urise.webapp.model.Resume;
+
 import java.util.Objects;
 
 /**
@@ -5,10 +9,10 @@ import java.util.Objects;
  */
 public class ArrayStorage {
     protected static final int STORAGE_LIMIT = 10000;
-    Resume[] storage = new Resume[STORAGE_LIMIT];
-    int size = 0;
+    private Resume[] storage = new Resume[STORAGE_LIMIT];
+    private int size = 0;
 
-    void clear() {
+    public void clear() {
 
         for (int i = 0; i < size; i++) {
             storage[i] = null;
@@ -17,13 +21,13 @@ public class ArrayStorage {
     }
 
 
-    void save(Resume r) {
+    public void save(Resume r) {
         if (size == STORAGE_LIMIT) {
             System.out.println("Error! Massive has be full!!!");
             return;
         }
         for (int i = 0; i < size; i++) {
-            if (r.uuid.equals(storage[i].uuid)) {
+            if (r.setUuid(r).equals(storage[i].getUuid())){
                 System.out.println("This uuid is already taken !!! Please enter another !!!");
                 return;
             }
@@ -34,20 +38,20 @@ public class ArrayStorage {
 
     }
 
-    Resume get(String uuid) {
+    public Resume get(String uuid) {
         Objects.requireNonNull(uuid, "uuis must not be null");
         for (int i = 0; i < size; i++) {
-            if (uuid.equals(storage[i].uuid)) {
+            if (uuid.equals(storage[i].getUuid())) {
                 return storage[i];
             }
         }
         return null;
     }
 
-    void delete(String uuid) {
+    public void delete(String uuid) {
         Objects.requireNonNull(uuid, "uuis must not be null");
         for (int i = 0; i < size; i++) {
-            if (uuid.equals(storage[i].uuid)) {
+            if (uuid.equals(storage[i].getUuid())) {
                 storage[i] = storage[size - 1];
                 storage[size - 1] = null;
                 size--;
@@ -59,7 +63,7 @@ public class ArrayStorage {
     /*
      * @return array, contains only Resumes in storage (without null)
      */
-    Resume[] getAll() {
+    public Resume[] getAll() {
         Resume[] fin = new Resume[size];
         int j = 0;
 
@@ -68,6 +72,10 @@ public class ArrayStorage {
             j++;
         }
         return fin;
+    }
+
+    public int size(){
+        return size;
     }
 
 }
