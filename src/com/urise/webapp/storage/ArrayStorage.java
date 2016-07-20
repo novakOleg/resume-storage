@@ -58,11 +58,9 @@ public class ArrayStorage {
             storage[size] = r;
             size++;
         } else {
-            System.out.println("Canceling");
+            System.out.println("Error! " + r + " is present in massive!enter another");
             return;
         }
-
-
     }
 
     public Resume get(String uuid) {
@@ -79,7 +77,7 @@ public class ArrayStorage {
             size--;
             return;
         }else{
-            System.out.println("Error! "+uuid+"don't present in massive ");
+            System.out.println("Error! " + uuid + " don't present in massive!enter another! ");
         }
     }
 
