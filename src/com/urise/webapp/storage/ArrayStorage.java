@@ -2,6 +2,7 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 /**
@@ -31,10 +32,7 @@ public class ArrayStorage {
     }
 
     public void clear() {
-
-        for (int i = 0; i < size; i++) {
-            storage[i] = null;
-        }
+        Arrays.fill(storage, 0, size, null);
         size = 0;
     }
 
@@ -83,14 +81,7 @@ public class ArrayStorage {
     }
 
     public Resume[] getAll() {
-        Resume[] fin = new Resume[size];
-        int j = 0;
-
-        for (int i = 0; i < size; i++) {
-            fin[j] = storage[i];
-            j++;
-        }
-        return fin;
+        return Arrays.copyOfRange(storage, 0, size);
     }
 
     public int size() {
