@@ -22,7 +22,7 @@ public class ArrayStorage extends AbstractArrayStorage {
         return false;
     }
 
-    public int getIndex(String uuid) {
+    protected int getIndex(String uuid) {
         for (int i = 0; i < size; i++) {
             if (uuid.equals(storage[i].getUuid())) {
                 return i;
@@ -60,11 +60,6 @@ public class ArrayStorage extends AbstractArrayStorage {
         }
 
 
-    }
-
-    public Resume get(String uuid) {
-        Objects.requireNonNull(uuid, "uuid must not be null");
-        return storage[getIndex(uuid)];
     }
 
     public void delete(String uuid) {
