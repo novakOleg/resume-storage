@@ -8,7 +8,7 @@ import java.util.Objects;
 /**
  * Array based storage for Resumes
  */
-public class ArrayStorage implements Storage {
+public class ArrayStorage extends AbstractArrayStorage {
     protected static final int STORAGE_LIMIT = 10000;
     private Resume[] storage = new Resume[STORAGE_LIMIT];
     private int size = 0;
@@ -51,7 +51,7 @@ public class ArrayStorage implements Storage {
             System.out.println("Error! Massive has be full!!!");
             return;
         }
-        if (inspection(r) == false) {
+        if (!inspection(r)) {
             storage[size] = r;
             size++;
         } else {
@@ -82,10 +82,6 @@ public class ArrayStorage implements Storage {
 
     public Resume[] getAll() {
         return Arrays.copyOfRange(storage, 0, size);
-    }
-
-    public int size() {
-        return size;
     }
 
 }

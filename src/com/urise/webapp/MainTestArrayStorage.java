@@ -65,7 +65,7 @@ public class MainTestArrayStorage {
         }
     }
 
-    static void printAll() {
+    public static void printAll() {
         Resume[] all = ARRAY_STORAGE.getAll();
         System.out.println("----------------------------");
         if (all.length == 0) {
