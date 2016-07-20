@@ -15,7 +15,6 @@ public class ArrayStorage {
     public boolean inspection(Resume r) {
         for (int i = 0; i < size; i++) {
             if (r.getUuid().equals(storage[i].getUuid())) {
-                System.out.println("This uuid " + r + " is already taken !!!");
                 return true;
             }
         }
@@ -58,7 +57,7 @@ public class ArrayStorage {
             storage[size] = r;
             size++;
         } else {
-            System.out.println("Canceling");
+            System.out.println("Error! " + r + "is present in massive!enter another ");
             return;
         }
 
@@ -71,7 +70,7 @@ public class ArrayStorage {
     }
 
     public void delete(String uuid) {
-        Objects.requireNonNull(uuid, "uuis must not be null");
+        Objects.requireNonNull(uuid, "uuid must not be null");
         int index = getIndex(uuid);
         if(index>0){
             storage[index] = storage[size - 1];
