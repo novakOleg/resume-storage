@@ -1,7 +1,7 @@
 package com.urise.webapp;
 
 import com.urise.webapp.model.Resume;
-import com.urise.webapp.storage.ArrayStorage;
+import com.urise.webapp.storage.SortedArraystorage;
 import com.urise.webapp.storage.Storage;
 
 /**
@@ -12,8 +12,8 @@ public class MainForseTest {
     public static final Storage STORAGE;
 
     static {
-        STORAGE = new ArrayStorage();
-        //		STORAGE=new SortedArrayStorage();
+        //STORAGE = new ArrayStorage();
+        STORAGE = new SortedArraystorage();
     }
 
     public static void main(String[] args) {

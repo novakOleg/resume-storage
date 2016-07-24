@@ -2,25 +2,18 @@ package com.urise.webapp.storage;
 
 import com.urise.webapp.model.Resume;
 
-/**
- * Created by 26nov on 20.07.2016.
- */
 public interface Storage {
+    void update(Resume resume);
 
-    void clear();
-
-    void update(Resume r);
-
-    void save(Resume r);
-
-    Resume get(String uuid);
+    void save(Resume resume);
 
     void delete(String uuid);
 
+    Resume get(String uuid);
+
     Resume[] getAll();
 
-    boolean inspection(Resume r);
+    void clear();
 
-    int size();
-
+    int getSize();
 }

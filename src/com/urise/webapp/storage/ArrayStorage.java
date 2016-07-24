@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * Array based storage for Resumes
  */
-public abstract class ArrayStorage extends AbstractArrayStorage {
+public class ArrayStorage extends AbstractArrayStorage {
     protected static final int STORAGE_LIMIT = 10000;
     private Resume[] storage = new Resume[STORAGE_LIMIT];
     private int size = 0;
@@ -48,6 +48,21 @@ public abstract class ArrayStorage extends AbstractArrayStorage {
         } else {
             System.out.println("Error! " + uuid + "don't present in massive ");
         }
+    }
+
+    @Override
+    public boolean inspection(Resume r) {
+        return false;
+    }
+
+    @Override
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public int getSize() {
+        return 0;
     }
 
 }
