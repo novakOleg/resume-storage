@@ -1,12 +1,16 @@
 package com.urise.webapp.model;
 
-/**
- * com.urise.webapp.model.com.urise.webapp.model.Resume class
- */
-public class Resume {
-
+public class Resume implements Comparable<Resume> {
     private String uuid;
-    
+
+    public Resume() {
+        uuid = new String();
+    }
+
+    public Resume(String uuid) {
+        this.uuid = uuid;
+    }
+
     public String getUuid() {
         return uuid;
     }
@@ -14,23 +18,20 @@ public class Resume {
     public void setUuid(String uuid) {
         this.uuid = uuid;
     }
-    // Unique identifier
 
     @Override
     public String toString() {
-        return uuid;
+        return "Resume [uuid=" + uuid + "]";
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Resume resume = (Resume) o;
-
-        if (!uuid.equals(resume.uuid)) return false;
-
-        return true;
+    public boolean equals(Object resume) {
+//       Check java.lang.ClassCastException
+        if (resume instanceof Resume) {
+            Resume r1 = (Resume) resume;
+            return uuid.equals(r1.getUuid());
+        }
+        return false;
     }
 
     @Override
@@ -38,4 +39,8 @@ public class Resume {
         return uuid.hashCode();
     }
 
+    @Override
+    public int compareTo(Resume o) {
+        return uuid.compareTo(o.getUuid());
+    }
 }
