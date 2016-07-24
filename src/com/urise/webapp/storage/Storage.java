@@ -6,6 +6,7 @@ import com.urise.webapp.model.Resume;
  * Created by 26nov on 20.07.2016.
  */
 public interface Storage {
+
     void clear();
 
     void update(Resume r);
@@ -18,5 +19,8 @@ public interface Storage {
 
     Resume[] getAll();
 
+    boolean inspection(Resume r);
+
     int size();
+
 }

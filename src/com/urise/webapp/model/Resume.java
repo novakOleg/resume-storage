@@ -6,7 +6,7 @@ package com.urise.webapp.model;
 public class Resume {
 
     private String uuid;
-
+    
     public String getUuid() {
         return uuid;
     }
@@ -37,4 +37,5 @@ public class Resume {
     public int hashCode() {
         return uuid.hashCode();
     }
+
 }
